@@ -10,18 +10,11 @@ Problems Faced:
 	
 Overview:
 
-1)Model Creation
-
-	a)Basic SDF
-	
-	b)Adding Inertia
-	
-	c)Adding the joints
-	
-	d)Adding Sensor (Ray: Scan and Range)
-	
-	e)Mesh Acquisition
-	
-2)Adding sensor noise
-
-3)Writing a control plugin
+1.Model Creation
+	-Basic SDF
+	-Adding Inertia
+	-Adding the joints
+	-Adding Sensor (Ray: Scan and Range)
+	-Mesh Acquisition
+2.Adding sensor noise
+3.Writing a control plugin
