@@ -3,6 +3,8 @@
 
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
+#include <gazebo/transport/transport.hh>
+#include <gazebo/msgs/msgs.hh>
 
 namespace gazebo
 {
@@ -33,11 +35,33 @@ namespace gazebo
      if(_sdf->HasElement("velocity"))
       velocity = _sdf->Get<double>("velocity");
      this->model->GetJointController()->SetVelocityTarget(this->joint->GetScopedName(),velocity);		//Setting joint's target velocity.
+
+     this->node = transport::NodePtr(new transport::Node());
+     #if GAZEBO_MAJOR_VERSION < 8
+     this->node->Init(this->model->GetWorld()->GetName());
+     #else
+     this->node->Init(this->model->GetWorld()->Name());
+     #endif
+     std::string topicName = "~/" + this->model->GetName() + "/vel_cmd";
+     this->sub = this->node->Subscribe(topicName,&VelodynePlugin::OnMsg,this);
+     
     }
+
+   /// \brief Set the velocity of the Velodyne
+   /// \param[in] _vel New target velocity
+   public: void SetVelocity(const double &_vel)
+   {
+    this->model->GetJointController()->SetVelocityTarget(this->joint->GetScopedName(),_vel);
+   }
+
+   private: void OnMsg(ConstVector3dPtr &_msg)
+   {this->SetVelocity(_msg->x());}
  
     private: physics::ModelPtr model;
     private: physics::JointPtr joint;
-    private: common::PID pid;  
+    private: common::PID pid;
+    private: transport::NodePtr node;
+    private: transport::SubscriberPtr sub;  
   };    
 
   //Tell Gazebo about this plugin so that Gazebo can call Load on this plugin.
