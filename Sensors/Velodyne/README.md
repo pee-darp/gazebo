@@ -15,5 +15,7 @@ Overview:
 	c)Adding the joints
 	d)Adding Sensor (Ray: Scan and Range)
 	e)Mesh Acquisition
+	
 2)Adding sensor noise
+
 3)Writing a control plugin
