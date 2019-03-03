@@ -9,11 +9,17 @@ Problems Faced:
 	
 	
 Overview:
+
 1)Model Creation
+
 	a)Basic SDF
+	
 	b)Adding Inertia
+	
 	c)Adding the joints
+	
 	d)Adding Sensor (Ray: Scan and Range)
+	
 	e)Mesh Acquisition
 	
 2)Adding sensor noise
