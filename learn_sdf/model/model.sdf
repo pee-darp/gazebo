@@ -90,24 +90,6 @@
 	</joint>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <plugin name="joint_control" filename="./libjoint_control.so">
 	<position>0.2</position>
 	<velocity>1</velocity>
