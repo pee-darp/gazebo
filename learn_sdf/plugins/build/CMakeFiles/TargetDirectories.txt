@@ -1,0 +1,3 @@
+/home/peedarp/model_editor_models/learn_sdf/plugins/build/CMakeFiles/edit_cache.dir
+/home/peedarp/model_editor_models/learn_sdf/plugins/build/CMakeFiles/rebuild_cache.dir
+/home/peedarp/model_editor_models/learn_sdf/plugins/build/CMakeFiles/joint_control.dir

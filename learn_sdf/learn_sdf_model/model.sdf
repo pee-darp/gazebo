@@ -1,0 +1,120 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+<model name="learn_sdf">
+<self_collide>1</self_collide>
+
+
+
+	<link name="base">
+
+		<pose> 0 0 0.15 0 0 0 </pose>
+
+		<inertial>
+			<pose> 0 0 0 0 0 0 </pose>
+			<mass> 5 </mass>
+			<inertia> <ixx>0.04</ixx>  <iyy>0.012</iyy>  <izz>0.04</izz>  <ixy>0</ixy> <ixz>0</ixz>  <iyz>0</iyz>  </inertia>
+		</inertial>
+
+		<visual name="base_visual">
+			<pose> 0 0 0 0 0 0 </pose>
+			<geometry>
+				<box>
+					<size> 0.3 0.3 0.3 </size>
+				</box>
+			</geometry>
+		</visual>
+
+		<collision name="_collision">
+			<pose> 0 0 0 0 0 0 </pose>
+			<geometry>
+				<box>
+					<size> 0.3 0.3 0.3 </size>
+				</box>
+			</geometry>
+		</collision>
+
+	</link>
+
+
+
+	<link name="shoulder_1">
+
+		<pose> 0 0 0.35 0 0 0 </pose>
+
+		<inertial>
+			<pose> 0 0 0 0 0 0 </pose>
+			<mass> 1 </mass>
+			<inertia> <ixx>0.04</ixx>  <iyy>0.012</iyy>  <izz>0.04</izz>  <ixy>0</ixy> <ixz>0</ixz>  <iyz>0</iyz>  </inertia>
+		</inertial>
+
+		<visual name="shoulder_1_visual">
+			<pose> 0 0 0 0 0 0 </pose>
+			<geometry>
+				<box>
+					<size> 0.1 0.1 0.1 </size>
+				</box>
+			</geometry>
+		</visual>
+
+		<collision name="_collision">
+			<pose> 0 0 0 0 0 0 </pose>
+			<geometry>
+				<box>
+					<size> 0.1 0.1 0.1 </size>
+				</box>
+			</geometry>
+		</collision>
+
+	</link>	
+
+
+
+	<joint name="shoulder_yaw" type="revolute">
+
+		<child> shoulder_1 </child>
+
+		<parent> base </parent>
+
+		<axis>
+			<xyz> 0 0 1 </xyz>
+			<use_parent_model_frame>1</use_parent_model_frame>
+			<limit>
+				<upper> 6.28 </upper>
+				<lower> 0.01 </lower>
+			</limit>
+			<dynamics>
+				<damping>1</damping>
+			</dynamics>
+		</axis>
+
+	</joint>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<plugin name="joint_control" filename="./libjoint_control.so">
+	<position>0.2</position>
+	<velocity>1</velocity>
+	<p>10</p> <i>0.1</i> <d>0.01</d>
+</plugin>
+
+<static>0</static>
+</model>
+</sdf>
+	

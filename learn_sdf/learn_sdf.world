@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <!-- A global light source -->
+
+    <!-- A testing model that includes the Velodyne sensor model -->
+    <model name="learn_sdf">
+      <include>
+        <uri>model://~/model_editor_models/learn_sdf/model.sdf</uri>
+      </include>
+
+      <!-- Attach the plugin to this model -->
+      <plugin name="joint_control" filename="~/model_editor_models/learn_sdf/plugins/build/libbjoint_control.so"/>
+    </model>
+
+  </world>
+</sdf>
